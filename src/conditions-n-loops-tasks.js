@@ -1,6 +1,6 @@
 /* *******************************************************************************************
  *                                                                                           *
- * Please read the following tutorial before implementing tasks:                             *
+ * Please read the following tutorial basis - 1 implementing tasks:                             *
  * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code    *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration         *
  * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals    *
@@ -459,8 +459,35 @@ function rotateMatrix(matrix) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(/* arr */) {
-  throw new Error('Not implemented');
+function sortByAsc(arr) {
+  function quickSort(splittedArr, startIndex, endIndex) {
+    const array = splittedArr;
+    let basis = endIndex;
+    let i = startIndex;
+
+    while (i < basis) {
+      if (array[i] > array[basis] && i === basis - 1) {
+        [array[i], array[basis]] = [array[basis], array[i]];
+        basis -= 1;
+      } else if (array[i] > array[basis]) {
+        [array[i], array[basis - 1]] = [array[basis - 1], array[i]];
+        [array[basis - 1], array[basis]] = [array[basis], array[basis - 1]];
+        basis -= 1;
+      } else {
+        i += 1;
+      }
+    }
+
+    if (basis > startIndex + 1) {
+      quickSort(array, startIndex, basis - 1);
+    }
+
+    if (basis < endIndex - 1) {
+      quickSort(array, basis + 1, endIndex);
+    }
+  }
+
+  quickSort(arr, 0, arr.length - 1);
 }
 
 /**
