@@ -361,8 +361,52 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix(size) {
+  if (size === 1) {
+    return [[1]];
+  }
+
+  const matrix = [];
+
+  for (let i = 0; i < size; i += 1) {
+    matrix[i] = [];
+  }
+
+  let value = 1;
+  let start = 0;
+  let end = size - 1;
+
+  while (value <= size ** 2) {
+    for (let i = start; i < end; i += 1) {
+      matrix[start][i] = value;
+      value += 1;
+    }
+
+    for (let i = start; i < end; i += 1) {
+      matrix[i][end] = value;
+      value += 1;
+    }
+
+    for (let i = end; i > start; i -= 1) {
+      matrix[end][i] = value;
+      value += 1;
+    }
+
+    for (let i = end; i > start; i -= 1) {
+      matrix[i][start] = value;
+      value += 1;
+    }
+
+    start += 1;
+    end -= 1;
+
+    if (start === end) {
+      matrix[start][start] = value;
+      break;
+    }
+  }
+
+  return matrix;
 }
 
 /**
