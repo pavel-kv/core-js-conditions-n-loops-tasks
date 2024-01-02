@@ -546,9 +546,9 @@ describe('core-js-conditions-n-loops', () => {
       assert.strictEqual(tasks.getNearestBigger(123450), 123504);
       assert.strictEqual(tasks.getNearestBigger(12344), 12434);
       assert.strictEqual(tasks.getNearestBigger(123440), 124034);
-      assert.strictEqual(tasks.getNearestBigger(90822), 92028);
       assert.strictEqual(tasks.getNearestBigger(534976), 536479);
       assert.strictEqual(tasks.getNearestBigger(52174920893), 52174920938);
+      assert.strictEqual(tasks.getNearestBigger(90822), 92028);
       for (let i = 0; i < 10; i += 1) {
         const number = utility.getRandomNumberUtil(11111111, 99999999);
         const nearest = utility.getNearestBiggerUtil(number);
