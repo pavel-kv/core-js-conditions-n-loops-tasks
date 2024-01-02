@@ -510,7 +510,7 @@ function sortByAsc(arr) {
 function shuffleChar(str, iterations) {
   function cashFuncShuffle(fn) {
     const cash = {};
-    return function (string) {
+    return function cachFn(string) {
       if (cash[string]) {
         return cash[string];
       }
